@@ -137,7 +137,7 @@ class DeployTest extends \PHPUnit\Framework\TestCase
         $this->assertFileExists($this->staticDir->getAbsolutePath('frontend/Magento/zoom3/default/css/root.css'));
         $this->assertFileExists($this->staticDir->getAbsolutePath('frontend/Magento/zoom3/default/css/local.css'));
 
-        $this->assertFileExistsIsGenerated('requirejs-config.js');
+        $this->assertFileExistsIsGenerated('show_hide_list.js');
         $this->assertFileExistsIsGenerated('requirejs-map.js');
         $this->assertFileExistsIsGenerated('map.json');
         $this->assertFileExistsIsGenerated('js-translation.json');

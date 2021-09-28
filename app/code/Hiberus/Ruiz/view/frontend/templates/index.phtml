@@ -11,12 +11,15 @@ $totalMarks = null;
 <?php if ($totalStudents == 0):?>
 <p>There are no qualifications.</p>
 <?php else: ?>
-<ul>
-    <?php foreach ($ltsQualifications as $qualification):?>
-        <li><?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?> - <?= $qualification->getMark() ?></li>
-        <?php $totalMarks += $qualification->getMark(); endforeach;?>
-    <li>Arithmetic mean: <?= round($totalMarks/$totalStudents, 2) ?></li>
-</ul>
-<p>Total number of students: <?= $totalStudents ?>.</p>
+<div id="list" data-mage-init='{"show_hide_list":{"option": value}}'>
+    <ul>
+        <?php foreach ($ltsQualifications as $qualification):?>
+            <li><?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?> - <?= $qualification->getMark() ?></li>
+            <?php $totalMarks += $qualification->getMark(); endforeach;?>
+        <li>Arithmetic mean: <?= round($totalMarks/$totalStudents, 2) ?></li>
+    </ul>
+    <p>Total number of students: <?= $totalStudents ?>.</p>
+</div>
 
+<button id="show_hide_list">Show-Hide list</button>
 <?php endif; ?>

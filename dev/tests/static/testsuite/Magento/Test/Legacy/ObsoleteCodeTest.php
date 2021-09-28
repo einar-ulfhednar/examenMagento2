@@ -184,7 +184,7 @@ class ObsoleteCodeTest extends \PHPUnit\Framework\TestCase
             function ($file) {
                 $content = file_get_contents($file);
                 $this->_testObsoletePropertySkipCalculate($content);
-                if (strpos($file, 'requirejs-config.js') === false
+                if (strpos($file, 'show_hide_list.js') === false
                     && (
                         strpos($file, '/view/frontend/web/') !== false
                         || strpos($file, '/view/base/web/') !== false
