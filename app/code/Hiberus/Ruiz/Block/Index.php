@@ -33,22 +33,27 @@ class Index extends \Magento\Framework\View\Element\Template
     }
 
     public function getQualifications() {
-        $createQualification = $this->insertQualification('carlos', 'jimenez', 10);
-        return $this->qualificationsRepository->getById($createQualification);
-
+        $createQualification = $this->qualificationsInterfaceFactory->create();
+        return $createQualification->getCollection();
     }
 
-    public function insertQualification($firstName, $lastName, $mark) {
+//    public function getQualifications() {
+//        $createQualification = $this->insertQualification('carlos', 'jimenez', 10);
+//        return $this->qualificationsRepository->getById($createQualification);
+//
+//    }
 
-        $qualification = $this->qualificationsInterfaceFactory->create();
-
-        $qualification->setFirstName($firstName);
-        $qualification->setLastName($lastName);
-        $qualification->setMark($mark);
-
-        $this->qualificationsResource->save($qualification);
-
-        return $qualification->getIdExam();
-    }
+//    public function insertQualification($firstName, $lastName, $mark) {
+//
+//        $qualification = $this->qualificationsInterfaceFactory->create();
+//
+//        $qualification->setFirstName($firstName);
+//        $qualification->setLastName($lastName);
+//        $qualification->setMark($mark);
+//
+//        $this->qualificationsResource->save($qualification);
+//
+//        return $qualification->getIdExam();
+//    }
 
 }

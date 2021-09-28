@@ -3,9 +3,20 @@
 /**
 * @var \Hiberus\Ruiz\Block\Index $block
 */
-$qualification = $block->getQualifications();
-
+$ltsQualifications = $block->getQualifications();
+$totalStudents = count($ltsQualifications);
+$totalMarks = null;
 ?>
+<h2 class="title">Students' notes</h2>
+<?php if ($totalStudents == 0):?>
+<p>There are no qualifications.</p>
+<?php else: ?>
+<ul>
+    <?php foreach ($ltsQualifications as $qualification):?>
+        <li><?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?> - <?= $qualification->getMark() ?></li>
+        <?php $totalMarks += $qualification->getMark(); endforeach;?>
+    <li>Arithmetic mean: <?= round($totalMarks/$totalStudents, 2) ?></li>
+</ul>
+<p>Total number of students: <?= $totalStudents ?>.</p>
 
-<h2>Nombre y apellidos: <?= $qualification->getFirstName() . ' ' . $qualification->getLastName() ?></h2>
-<h3>Nota: <?= $qualification->getMark() ?></h3>
+<?php endif; ?>

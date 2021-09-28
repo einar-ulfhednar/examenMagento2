@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="hiberus" sortOrder="999" translate="label">
+            <label>Hiberus</label>
+        </tab>
+        <section id="hiberus_exam_settings" showInDefault="1" sortOrder="10">
+            <label>Hiberus Exam Settings</label>
+            <tab>hiberus</tab>
+            <resource>Hiberus_Ruiz::config</resource>
+            <group id="settings" showInDefault="1" sortOrder="10">
+                <label>Exam Settings</label>
+                <field id="items_to_list" showInDefault="1" sortOrder="10">
+                    <validate>Integer</validate>
+                    <label>Set the items to list</label>
+                </field>
+                <field id="grade_to_pass" showInDefault="2" sortOrder="10">
+                    <validate>Integer</validate>
+                    <label>Set the grade to pass</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
