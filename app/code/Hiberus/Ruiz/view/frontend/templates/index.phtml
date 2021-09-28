@@ -1,0 +1,11 @@
+<?php
+
+/**
+* @var \Hiberus\Ruiz\Block\Index $block
+*/
+$qualification = $block->getQualifications();
+
+?>
+
+<h2>Nombre y apellidos: <?= $qualification->getFirstName() . ' ' . $qualification->getLastName() ?></h2>
+<h3>Nota: <?= $qualification->getMark() ?></h3>
