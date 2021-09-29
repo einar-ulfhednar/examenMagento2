@@ -14,7 +14,7 @@ $totalMarks = null;
 <?php if ($totalStudents == 0): ?>
     <p>There are no qualifications.</p>
 <?php else: ?>
-    <div id="list" data-mage-init='{"show_hide_list":{"option": value}}'>
+    <div id="list">
         <ul>
             <?php foreach ($ltsQualifications as $qualification): ?>
                 <li><?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?>
@@ -26,13 +26,23 @@ $totalMarks = null;
     </div>
 
     <button id="show_hide_list">Show-Hide list</button>
+    <button id="show_highest_note">Show highest note</button>
 <?php endif; ?>
 
 <script>
+    let highestNote = <?= $block->getHighestNote(); ?>;
+
     require([
         'jquery',
         'show_hide_list'
-    ], function (show_hide_list) {
+    ], function ($, show_hide_list) {
         show_hide_list('#show_hide_list', '#list');
+    });
+
+    require([
+        'jquery',
+        'show_highest_note'
+    ], function ($, show_highest_note) {
+        show_highest_note('#show_highest_note');
     });
 </script>

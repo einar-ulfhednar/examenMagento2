@@ -37,6 +37,18 @@ class Index extends \Magento\Framework\View\Element\Template
         return $createQualification->getCollection();
     }
 
+    public function getHighestNote() {
+        $createQualification = $this->qualificationsInterfaceFactory->create();
+        $qualifications = $createQualification->getCollection()->getData();
+        $highestNote = 0;
+
+        foreach ($qualifications as $qualification) {
+            if ($qualification['mark'] > $highestNote) {
+                $highestNote = $qualification['mark'];
+            }
+        }
+        return $highestNote;
+    }
 //    public function getQualifications() {
 //        $createQualification = $this->insertQualification('carlos', 'jimenez', 10);
 //        return $this->qualificationsRepository->getById($createQualification);
