@@ -17,9 +17,15 @@ $totalMarks = null;
     <div id="list">
         <ul>
             <?php foreach ($ltsQualifications as $qualification): ?>
-                <li><?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?>
-                    - <?= $qualification->getMark() ?></li>
-                <?php $totalMarks += $qualification->getMark(); endforeach; ?>
+            <?php if ($qualification->getMark() < 5): ?>
+                <li class="failed">
+            <?php else: ?>
+                <li class="passed">
+            <?php endif; ?>
+            <?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?>
+            - <?= $qualification->getMark() ?></li>
+            <?php $totalMarks += $qualification->getMark(); ?>
+            <?php endforeach; ?>
             <li>Arithmetic mean: <?= round($totalMarks / $totalStudents, 2) ?></li>
         </ul>
         <p>Total number of students: <?= $totalStudents ?>.</p>

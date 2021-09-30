@@ -1,16 +1,27 @@
+@import "_mixin";
+
 @margin-left-primary: 20px;
+
 & when (@media-common = true) {
     .title {
-        color: #2B6FB6;
+        color: lightskyblue;
     }
 
    #list li:nth-child(even) {
         margin-left: @margin-left-primary;
     }
+
+    .failed {
+        .notes(lightcoral);
+    }
+
+    .passed {
+        .notes(lightgreen);
+    }
 }
 
 .media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
     .title {
-        color: #4d926f;
+        color: lightseagreen;
     }
 }
