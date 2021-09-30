@@ -1,0 +1,16 @@
+@margin-left-primary: 20px;
+& when (@media-common = true) {
+    .title {
+        color: #2B6FB6;
+    }
+
+   #list li:nth-child(even) {
+        margin-left: @margin-left-primary;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .title {
+        color: #4d926f;
+    }
+}
