@@ -9,6 +9,7 @@ use Hiberus\Ruiz\Block\Index;
 $ltsQualifications = $block->getQualifications();
 $totalStudents = count($ltsQualifications);
 $totalMarks = null;
+$highestThreeNotes = $block->getHighestThreeNotes();
 ?>
 <h2 class="title">Students' notes</h2>
 <?php if ($totalStudents == 0): ?>
@@ -18,9 +19,16 @@ $totalMarks = null;
         <ul>
             <?php foreach ($ltsQualifications as $qualification): ?>
             <?php if ($qualification->getMark() < 5): ?>
-                <li class="failed">
+                <li class="failed" >
             <?php else: ?>
-                <li class="passed">
+                <li class="passed
+                <?php
+                    foreach($highestThreeNotes as $note) {
+                        if ($qualification['id_exam'] == $note['id_exam']) {
+                            echo ' highestThreeNotes';
+                        }
+                    }
+                ?>">
             <?php endif; ?>
             <?= $qualification->getFirstName() ?> - <?= $qualification->getLastName() ?>
             - <?= $qualification->getMark() ?></li>

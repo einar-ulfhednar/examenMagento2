@@ -49,23 +49,17 @@ class Index extends \Magento\Framework\View\Element\Template
         }
         return $highestNote;
     }
-//    public function getQualifications() {
-//        $createQualification = $this->insertQualification('carlos', 'jimenez', 10);
-//        return $this->qualificationsRepository->getById($createQualification);
-//
-//    }
 
-//    public function insertQualification($firstName, $lastName, $mark) {
-//
-//        $qualification = $this->qualificationsInterfaceFactory->create();
-//
-//        $qualification->setFirstName($firstName);
-//        $qualification->setLastName($lastName);
-//        $qualification->setMark($mark);
-//
-//        $this->qualificationsResource->save($qualification);
-//
-//        return $qualification->getIdExam();
-//    }
+    public function getHighestThreeNotes() {
+        $createQualification = $this->qualificationsInterfaceFactory->create();
+        $qualifications = $createQualification->getCollection()->getData();
 
+        uasort($qualifications, function ($a, $b) {
+            if ($a['mark'] == $b['mark'])
+                return 0;
+            return (($a['mark'] < $b['mark']) ? 1 : -1);
+        });
+
+        return array_slice($qualifications, 0, 3);
+    }
 }
